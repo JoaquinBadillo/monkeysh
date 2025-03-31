@@ -333,12 +333,16 @@ func (t *typer) start(s string, timeLimit time.Duration, startImmediately bool, 
 			switch key := ev.Key(); key {
 			case tcell.KeyCtrlC:
 				rc = TyperSigInt
-
 				return
+
+			case tcell.KeyTab:
+				rc = TyperComplete
+				return
+
 			case tcell.KeyEscape:
 				rc = TyperEscape
-
 				return
+
 			case tcell.KeyCtrlL:
 				t.Scr.Sync()
 

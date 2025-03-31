@@ -7,21 +7,20 @@ all:
 
 .PHONY: install
 install:
+	go build -o bin/tt src/*.go
 	install -d $(DESTDIR)$(PREFIX)/bin
-	install -d $(DESTDIR)$(PREFIX)/share/man/man1
 	install -m755 bin/tt $(DESTDIR)$(PREFIX)/bin
-	install -m644 tt.1.gz $(DESTDIR)$(PREFIX)/share/man/man1
 
+.PHONY: man
+man:
+	pandoc -s -t man -o - man.md|gzip > tt.1.gz
+	install -d $(DESTDIR)$(PREFIX)/share/man/man1
+	install -m644 tt.1.gz $(DESTDIR)$(PREFIX)/share/man/man1
+		
 .PHONY: uninstall
 uninstall:
 	rm -f $(DESTDIR)$(PREFIX)/bin/tt
 	rm -f $(DESTDIR)$(PREFIX)/share/man/man1/tt.1.gz
-
-.PHONY: assets
-assets:
-	python3 ./scripts/themegen.py
-	./scripts/pack themes/ words/ quotes/ > src/packed.go
-	pandoc -s -t man -o - man.md|gzip > tt.1.gz
 
 .PHONY: rel
 rel:

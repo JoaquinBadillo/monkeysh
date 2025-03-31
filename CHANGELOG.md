@@ -1,3 +1,6 @@
+# 0.4.3 (fork):
+  Add catppuccin mocha theme.
+
 # 0.4.2:
   Added -notheme, -blockcursor and -bold.
 

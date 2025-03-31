@@ -7,7 +7,7 @@ A terminal based typing test.
 ## Linux
 
 ```
-sudo curl -L hmonkeyshps://github.com/lemnos/tt/releases/download/v0.4.2/tt-linux -o /usr/local/bin/monkeysh && sudo chmod +x /usr/local/bin/monkeysh
+sudo curl -L https://github.com/lemnos/tt/releases/download/v0.4.2/tt-linux -o /usr/local/bin/monkeysh && sudo chmod +x /usr/local/bin/monkeysh
 sudo curl -o /usr/share/man/man1/monkeysh.1.gz -L https://github.com/lemnos/tt/releases/download/v0.4.2/tt.1.gz
 ```
 
@@ -16,7 +16,7 @@ sudo curl -o /usr/share/man/man1/monkeysh.1.gz -L https://github.com/lemnos/tt/r
 ```
 mkdir -p /usr/local/bin /usr/local/share/man/man1 # Usually created by brew
 
-sudo curl -L hmonkeyshps://github.com/lemnos/tt/releases/download/v0.4.2/tt-osx -o /usr/local/bin/monkeysh && sudo chmod +x /usr/local/bin/monkeysh
+sudo curl -L https://github.com/lemnos/tt/releases/download/v0.4.2/tt-osx -o /usr/local/bin/monkeysh && sudo chmod +x /usr/local/bin/monkeysh
 sudo curl -o /usr/local/share/man/man1/monkeysh.1.gz -L https://github.com/lemnos/tt/releases/download/v0.4.2/monkeysh.1.gz
 ```
 
@@ -55,7 +55,6 @@ options.
 - Pressing `esc` will restart the test.
 
 ## Examples
-
  - `monkeysh -quotes en` Starts quote mode with the builtin quote list 'en'.
  - `monkeysh -n 10 -g 5` produces a test consisting of 50 randomly drawn words in 5 groups of 10 words each.
  - `monkeysh -t 10` starts a timed test lasting 10 seconds.
@@ -67,8 +66,8 @@ conceive of should be possible to implement. Below are some simple examples of
 what can be achieved.
 
  - `shuf -n 40 /usr/share/dict/words|monkeysh`  Produces a test consisting of 40 random words drawn from your system's dictionary.
- - `curl hmonkeyshp://api.quotable.io/random|jq '[.text=.content|.attribution=.author]'|monkeysh -quotes -` Produces a test consisting of a random quote.
- - `alias ttd='monkeysh -csv >> ~/wpm.csv'` Creates an alias called ttd which keeps a log of progress in your home directory`.
+ - `curl https://api.quotable.io/random|jq '[.text=.content|.attribution=.author]'|monkeysh -quotes -` Produces a test consisting of a random quote.
+- `alias monkeytype='monkeysh -t 30 -bold -showwpm'` Creates an alias called `monkeytype` that has a 30 second timer and shows the live words per minute.
 
 The default behaviour is equivalent to `monkeysh -n 50`.
 
